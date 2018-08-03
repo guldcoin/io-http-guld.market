@@ -1,9 +1,51 @@
+/*
+Template Name: GuldIO
+Description: HTML5 / CSS3 One Page
+Version: 1.0
+Author: Guld & Rio Myers
+Website: https://riomyers.com
+*/
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h1,h2 {
+    padding: 0.5em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 300;
+}
+
+h3 { margin-bottom: 1rem;}
+
+.btn-primary {
+    color: #fff;
+    background-color: #274175;
+    border-color: #3b4a5a;
+}
+
+a {
+	white-space: normal;
+}
+
+a:hover{text-decoration: none;}
+
 body {
   min-height: 100vh;
   width: 100%;
   background: url("../img/background.jpg");
   background-size: cover;
   background-color: #000;
+}
+
+.header {
+	height: 100vh;
+	min-height: 100%;
+    width: 100%;
+    z-index: 9;
+    margin-top: -4rem;
 }
 
 label {
@@ -140,16 +182,6 @@ form .btn {
   }
 }
 
-.footer {
-  background: #3E3F43;
-  color: #fff;
-  display: inline-block;
-  padding: 1rem;
-  position: fixed;
-  bottom: 3rem;
-  right: 0;
-}
-
 #chat {
   width: 2rem;
   margin-right: .4rem;
@@ -161,10 +193,11 @@ form .btn {
   text-align: justify;
 }
 
-#qrcode img {
-  padding: 1.2rem;
+.qrcode {
+  padding: 0.5rem;
   background: #fff;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
+  max-width: 450px;
 }
 
 .main {
@@ -191,6 +224,10 @@ form .btn {
   margin: 2rem 0;
 }
 
+.alert-danger,.alert-success,alert-warning {
+  padding: 1em;
+}
+
 #address label {
   color: #6b6d76;
   display: block;
@@ -198,18 +235,18 @@ form .btn {
   margin-bottom: 0;
 }
 
-#info .line img {
+#choose-pair .line img {
   height: 1.4rem;
   display: inline-block;
   float: left;
   margin-right: .8rem;
 }
 
-#info .line p {
+#choose-pair .line p {
   line-height: 1.5rem;
 }
 
-#info .line label {
+#choose-pair .line label {
   margin-bottom: .4rem;
 }
 
@@ -235,7 +272,7 @@ form .btn {
 
 .clock-number {
   display: inline-block;
-  margin: 10rem 1rem; 
+  margin: 5rem 1rem; 
 }
 
 .circle {
@@ -292,7 +329,7 @@ form .btn {
     margin: 0 1rem;
   }
 
-  #info {
+  #choose-pair {
     margin: 4rem 0;
   }
 }
@@ -309,10 +346,10 @@ form .btn {
     position: relative;
     top: 0;
   }  
-  #info {
+  #choose-pair {
     text-align: center;
   }
-  #info .line img {
+  #choose-pair .line img {
     float: none;
     margin-right: 0;
     margin-bottom: 0.6rem;
@@ -322,3 +359,24 @@ form .btn {
     margin: 3rem auto 1rem auto;
   }
 }
+
+.footer {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    background: #3E3F43;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer ul {
+	margin-top: 0.5em;
+	text-align: center;
+}
+
+.copytext{text-align: center;}
+
+.footer .row {margin: 0;}
+
