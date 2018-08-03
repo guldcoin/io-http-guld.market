@@ -153,6 +153,14 @@ function loadAssets () {
   qqr.src = window.quotes[window.quotes.active].image
   var bqr = document.getElementById('base-logo-active')
   bqr.src = window.bases[window.bases.active].image
+  var quoteas = document.getElementsByClassName("quote-asset")
+  for(var i = quoteas.length - 1; i >= 0; i--) {
+      quoteas[i].innerText = window.quotes.active
+  }
+  var baseas = document.getElementsByClassName("base-asset")
+  for(var i = baseas.length - 1; i >= 0; i--) {
+      baseas[i].innerText = window.bases.active
+  }
 
   card.innerHTML = `<a href="${window.quotes[window.quotes.active].name}://${window.bases[window.bases.active].addresses[window.quotes.active]}">
     <div class="card-block">
