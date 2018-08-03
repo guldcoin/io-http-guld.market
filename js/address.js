@@ -36,6 +36,15 @@ window.quotes = {
   }
 }
 
+window.prices = {
+  'USD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
+  'BTC': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
+  'DASH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
+  'ETH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
+  'ISYSD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
+  'GULD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}
+}
+
 // from https://stackoverflow.com/a/21739514
 function roundTimeQuarterHour(time) {
     time = time || new Date()
@@ -79,6 +88,13 @@ function parseCommodityPrice (pricef, commodity = 'GULD', quote = 'USD') {
   } else throw new RangeError(`Price not found for commodity ${commodity}`)
 }
 
+function updatePrices (pay, base, market='coinmarketcap') {
+  if (pay === quote) return updatePrice(pay, base, market)
+  else {
+    var bp = updatePrice
+  }
+}
+
 function updatePrice (quote, base, market='coinmarketcap') {
   quote = quote || window.quote
   base = base || window.base
@@ -87,6 +103,7 @@ function updatePrice (quote, base, market='coinmarketcap') {
     var activePrices = document.getElementsByClassName("active-price");
     for(var i = activePrices.length - 1; i >= 0; i--) {
         activePrices[i].innerText = parseCommodityPrice(data, base, quote)
+        window.prices[quote][base] = Number(activePrices[i].innerText)
     }
   }
   $.ajax({
@@ -101,7 +118,8 @@ function updatePrice (quote, base, market='coinmarketcap') {
 function updateAmounts () {
   var depAmt = document.getElementById('deposit-amount')
   var recAmt = document.getElementById('receive-amount')
-  depAmt.innerText = ``
+  
+  depAmt.innerText = `${}`
 }
 
 function updateAssets (quote, base) {
