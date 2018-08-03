@@ -101,7 +101,7 @@ function updatePrices (pay, base, market='coinmarketcap') {
 function updatePrice (quote, base, market='coinmarketcap') {
   quote = quote || window.quote
   base = base || window.base
-  if (base === 'GULD') market = 'guld-core'
+  if (['GULD', 'ISYSD'].indexOf(base) > -1) market = 'guld-core'
   $.ajax({
     url: `/market/${quote}/${base}/prices/${market}.dat`,
   })
@@ -139,6 +139,7 @@ function updateAssets (quote, base) {
   window.quotes.active = quote || window.quotes.active
   window.bases.active = base || window.bases.active
   loadAssets()
+  updatePrices(quote, base)
 }
 
 function loadAssets () {
