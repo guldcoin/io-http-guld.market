@@ -399,3 +399,8 @@ form .btn {
 .footer .row {margin: 0;}
 
 .card{background-color: transparent}
+
+.modal-content {
+    background-color: #181818;
+    color: #fff;
+}
