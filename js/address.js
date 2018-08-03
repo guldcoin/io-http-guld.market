@@ -43,7 +43,7 @@ function updatePrice (quote, base, market='coinmarketcap') {
     var activePrices = document.getElementsByClassName("active-price");
 
     for(var i = activePrices.length - 1; i >= 0; i--) {
-        timestampArray[i].innerHTML = parseCommodityPrice(data, base, quote)
+        activePrices[i].innerText = parseCommodityPrice(data, base, quote)
     }
 
   }
