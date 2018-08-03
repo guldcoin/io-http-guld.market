@@ -19,7 +19,7 @@ var x = setInterval(function () {
     var now = new Date().getTime();
 
     // Find the distance between now an the count down date
-    var distance = countDownDate - now;
+    var distance = Number(countDownDate - now);
 
     // Time calculations for minutes and seconds
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -35,9 +35,14 @@ var x = setInterval(function () {
     document.getElementById("minutes").innerText = minutes;
     document.getElementById("seconds").innerText = seconds;
 
-    // If the count down is finished, write some text 
+    var warning = `<h6 class="card-title ALERT_CLASS">Your GULD will be credited at the exchange rate given by <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a> at the start of the 15 minute window when the transaction is first witnessed by isysd, or when the first confirmation is received, whichever is first.</h6>`
     if (distance < 0) {
-        clearInterval(x);
-        window.location.reload(false);
+        countDownDate = roundTimeQuarterHour().getTime();
+    } else if (distance < 300000) {
+        document.getElementById("time-warning").innerHTML = warning.replace('ALERT_CLASS', 'alert-danger')
+    } else if (distance < 600000) {
+        document.getElementById("time-warning").innerHTML = warning.replace('ALERT_CLASS', 'alert-warning')
+    } else {
+        document.getElementById("time-warning").innerHTML = warning.replace('ALERT_CLASS', 'alert-success')
     }
 }, 1000);
