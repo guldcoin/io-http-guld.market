@@ -37,12 +37,12 @@ window.quotes = {
 }
 
 window.prices = {
-  'USD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
-  'BTC': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
-  'DASH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
-  'ETH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
-  'ISYSD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}, 
-  'GULD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD'}
+  'USD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}, 
+  'BTC': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}, 
+  'DASH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}, 
+  'ETH': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}, 
+  'ISYSD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}, 
+  'GULD': {'BTC': 0, 'DASH': 0, 'ETH': 0, 'GULD': 0, 'ISYSD': 0}
 }
 
 // from https://stackoverflow.com/a/21739514
