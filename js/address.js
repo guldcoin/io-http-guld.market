@@ -233,7 +233,7 @@ var x = setInterval(function () {
     var warning = `<h6 class="card-title ALERT_CLASS">Your <span class="base-asset">${window.bases.active}</span> will be credited at the exchange rate given by <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a> at the start of the 15 minute window when the transaction is first witnessed. <a href="https://guld.legal/contract/template/trade/INTERNATIONAL_SALE_GOODS_U1000.html">Sales Agreement</a></h6>`
     if (distance < 0) {
         countDownDate = roundTimeQuarterHour().getTime()
-        updatePrice()
+        updatePrices()
     } else if (distance < 300000) {
         document.getElementById("time-warning").innerHTML = warning.replace('ALERT_CLASS', 'alert-danger')
     } else if (distance < 600000) {
