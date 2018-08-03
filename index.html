@@ -71,47 +71,39 @@
                         </div>
 
                         <div id="transaction">
+                            <h3 class="card-title active-price"></h3>
                             <div class="asset text-center">Deposit
                                 <p>
-                                    <img src="/img/btc.svg">
+                                    <a data-toggle="modal" data-target="#quoteModal"><img src="/img/btc.svg"></a>
                                 </p>
-                                <p class="deposit-amount">0.0007</p>
+                                <p class="deposit-amount">0.00014286</p>
                             </div>
                             <div class="asset text-center">Receive
                                 <p>
-                                    <img src="/img/ico.svg">
+                                    <a data-toggle="modal" data-target="#baseModal"><img src="/img/ico.svg"></a>
                                 </p>
-                                <p class="receive-amount">70</p>
-                            </div>
-                            <div id="download">
-                                <a class="btn btn-primary">
-                                Download Contract
-                            </a> Download/link to copy of Human Good Sales Agreement.
+                                <p class="receive-amount">1</p>
                             </div>
                         </div>
+                        <div class="text-center">
+                            <div class="clock-number">
+                                <div class="number" id="minutes"></div>
+                                <div class="circle"></div>
+                            </div>
+                            <div class="clock-number">
+                                <div class="number" id="seconds"></div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                        <div id="time-warning" class="card-block">
+                            <h6 class="card-title alert-danger">Your GULD will be credited at the exchange rate given by <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a> at the start of the 15 minute window when the transaction is first witnessed. <a href="https://guld.legal/contract/template/trade/INTERNATIONAL_SALE_GOODS_U1000.html">Sales Agreement</a></h6>
+                        </div>
+
                     </div>
 
                     <div id="clock" class="col-md-6 col-xl-4 text-center">
                         <div class="card-block text-center">
-                            <h2 class="card-title">2. Price</h2>
-                            <h6 class="card-title active-price"></h6>
-                        </div>
-                        <div class="clock-number">
-                            <div class="number" id="minutes"></div>
-                            <div class="circle"></div>
-                        </div>
-                        <div class="clock-number">
-                            <div class="number" id="seconds"></div>
-                            <div class="circle"></div>
-                        </div>
-                        <div id="time-warning" class="card-block">
-                            <h6 class="card-title alert-danger">Your GULD will be credited at the exchange rate given by <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a> at the start of the 15 minute window when the transaction is first witnessed by isysd, or when the first confirmation is received, whichever is first.</h6>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card-block text-center">
-                            <h2 class="card-title">3. Pay</h2>
+                            <h2 class="card-title">2. Pay</h2>
                         </div>
                         <div class="card">
                             <a href="dash://1FVa2fGZqVzDXer8HirMcKSbDcfR4R4zNK">
@@ -122,6 +114,11 @@
                                     <img src="img/btc.png" alt="1FVa2fGZqVzDXer8HirMcKSbDcfR4R4zNK" class="card-img-top qrcode">
                                 </div>
                             </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card-block text-center">
+                            <h2 class="card-title">3. Claim</h2>
                         </div>
                         <div class="card-block">
                             <h6 class="card-title alert-danger">WARNING: You will be asked to provide <a href="proof-of-address.html">Proof of Address</a> to claim your GULD. You must have access to the private key of the sending address and must be able to sign your <a href="https://guld.io">guld</a> username with it.</h6>
@@ -200,6 +197,32 @@
             </div>
         </footer>
         <!-- .footer -->
+    </div>
+
+    <!-- Quote Modal -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog" aria-labelledby="quoteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quoteModalLabel">Deposit (quote) unit</h5>
+          </div>
+          <div class="modal-body" id="quote-list">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Base Modal -->
+    <div class="modal fade" id="baseModal" tabindex="-1" role="dialog" aria-labelledby="baseModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="baseModalLabel">Receive (base) unit</h5>
+          </div>
+          <div class="modal-body" id="base-list">
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jquery -->

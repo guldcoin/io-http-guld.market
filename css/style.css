@@ -205,9 +205,9 @@ form .btn {
 }
 
 .asset {
-  width: 9rem;
+  width: 45%;
   display: inline-block;
-  margin-right: .6rem;
+  margin-right: 2.5%;
   font-size: .9rem;
 }
 
@@ -224,8 +224,26 @@ form .btn {
   margin: 2rem 0;
 }
 
-.alert-danger,.alert-success,alert-warning {
+.alert-danger,.alert-success,.alert-warning {
   padding: 1em;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.card-asset {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  border: none;
+}
+
+.card-asset img {
+  max-height: 175px;
+  max-width: 175px;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 #address label {
@@ -272,12 +290,12 @@ form .btn {
 
 .clock-number {
   display: inline-block;
-  margin: 5rem 1rem; 
+  margin: 1rem 1rem; 
 }
 
 .circle {
-  height: 120px;
-  width: 120px;
+  height: 59px;
+  width: 59px;
   border: .6rem solid #313135;
   border-top-color: #d0b460;
   border-radius: 50%;
@@ -285,9 +303,9 @@ form .btn {
 }
 
 .clock-number .number {
-  font-size: 4rem;
+  font-size: 1rem;
   position: absolute;
-  margin: .9rem 1.4rem;
+  margin: 1.1rem 1.3rem;
 }
 
 #priceTickets {
@@ -315,22 +333,21 @@ form .btn {
 }
 
 #transaction {
-  width: 23rem;
   margin: 0 auto;
 }
 
 @media (max-width: 1199.98px) {
-  #clock {
+  /*#clock {
     position: absolute;
     top: 40rem;
-  }
+  }*/
 
   .clock-number {
     margin: 0 1rem;
   }
 
   #choose-pair {
-    margin: 4rem 0;
+    margin: 1rem 0;
   }
 }
 
@@ -361,6 +378,7 @@ form .btn {
 }
 
 .footer {
+    margin-top: 2em;
     padding: 0.5rem 0;
     font-size: 1rem;
     background: #3E3F43;
@@ -380,3 +398,4 @@ form .btn {
 
 .footer .row {margin: 0;}
 
+.card{background-color: transparent}
