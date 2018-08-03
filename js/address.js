@@ -116,7 +116,6 @@ function updatePrice (quote, base, market='coinmarketcap') {
 }
 
 function loadPrices () {
-  console.log(window.prices[window.quote])
   if (window.prices[window.quote][window.bases.active] &&
       window.prices[window.quote][window.bases.active] !== 0 &&
       window.prices[window.quote][window.quotes.active] &&
@@ -133,7 +132,7 @@ function loadPrices () {
 function updateAmounts () {
   var depAmt = document.getElementById('deposit-amount')
   var recAmt = document.getElementById('receive-amount')
-  depAmt.innerText = `${Number(recAmt.innerText) / window.prices[window.quotes.active][window.bases.active]}`
+  depAmt.innerText = `${Number(recAmt.innerText) * window.prices[window.quotes.active][window.bases.active]}`
 }
 
 function updateAssets (quote, base) {

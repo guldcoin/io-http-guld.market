@@ -205,9 +205,9 @@ form .btn {
 }
 
 .asset {
-  width: 45%;
+  width: 40%;
   display: inline-block;
-  margin-right: 2.5%;
+  margin: 0 2.5% 2.5% 0;
   font-size: .9rem;
 }
 
