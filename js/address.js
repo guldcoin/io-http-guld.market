@@ -13,6 +13,20 @@ function roundTimeQuarterHour(time) {
     return timeToReturn
 }
 
+function filterPricesByTime (line) {
+  if (!line.startsWith('P ')) return false
+  else {
+    var pdate = line.substring(2, 12)
+    var apdate = pdate.split('/')
+    pdate = `${apdate[1]}/${apdate[2]}/${apdate[0]}`
+    var now = Date.now()
+    var ptime = new Date(pdate).getTime()
+    if (now >= ptime) {
+      return true
+    } else return false
+  }
+}
+
 function parseCommodityPrice (pricef, commodity = 'GULD', quote = 'USD') {
   var pricefl
   var pricea
