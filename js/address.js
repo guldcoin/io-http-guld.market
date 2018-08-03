@@ -35,9 +35,6 @@ function parseCommodityPrice (pricef, commodity = 'GULD', quote = 'USD') {
 function updatePrice (quote, base, market='coinmarketcap') {
   quote = quote || window.quote
   base = base || window.base
-  console.log($)
-  console.log($.ajax)
-  console.log($.Ajax)
   console.log(quote)
   console.log(base)
   if (base === 'GULD') market = 'guld-core'
@@ -54,7 +51,6 @@ function updatePrice (quote, base, market='coinmarketcap') {
     url: `/market/${quote}/${base}/prices/${market}.dat`,
   })
   .done(process)
-  .success(process)
   .fail(function() {
     alert("Ajax failed to fetch data")
   })
