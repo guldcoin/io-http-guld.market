@@ -128,7 +128,7 @@ function loadPrices () {
     window.prices[window.quotes.active][window.bases.active] = Math.round(window.prices[window.quote][window.bases.active] / window.prices[window.quote][window.quotes.active] * 1e8) / 1e8
     var activePrices = document.getElementsByClassName("active-price")
     for(var i = activePrices.length - 1; i >= 0; i--) {
-        activePrices[i].innerText = window.prices[window.quotes.active][window.bases.active]
+        activePrices[i].innerText = `${window.prices[window.quotes.active][window.bases.active]} ${window.quotes.active} / ${window.bases.active}`
         updateAmounts()
     }
   }
