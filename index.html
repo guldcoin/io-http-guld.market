@@ -67,7 +67,7 @@
                 <div class="row">
                     <div id="choose-pair" class="col-md-6 col-xl-4 ">
                         <div class="card-block text-center">
-                            <h2 class="card-title">1. Order</h2>
+                            <h1 class="card-title">1. Order</h1>
                         </div>
 
                         <div id="transaction" class="text-center">
@@ -106,7 +106,7 @@
 
                     <div id="clock" class="col-md-6 col-xl-4 text-center">
                         <div class="card-block text-center">
-                            <h2 class="card-title">2. Pay</h2>
+                            <h1 class="card-title">2. Pay</h1>
                         </div>
                         <div class="card" id="qr-card">
                             <a href="btc://1FVa2fGZqVzDXer8HirMcKSbDcfR4R4zNK">
@@ -121,10 +121,27 @@
                     </div>
                     <div class="col-md-6 col-xl-4">
                         <div class="card-block text-center">
-                            <h2 class="card-title">3. Claim</h2>
+                            <h1 class="card-title">3. Claim</h1>
                         </div>
                         <div class="card-block">
                             <h6 class="card-title alert-danger">WARNING: You will be asked to provide <a href="proof-of-address.html">Proof of Address</a> to claim your <span class="base-asset">GULD</span>. You must have access to the private key of the sending address and must be able to sign the <a href="https://guld.legal/contract/template/trade/INTERNATIONAL_SALE_GOODS_U1000.html">Sales Agreement</a> with it.</h6>
+                            <form>
+                              <div class="form-group">
+                                <label for="signing-address">Signing address</label>
+                                <input type="text" class="form-control" id="signing-address" aria-describedby="addressHelp" placeholder="Your Address">
+                                <small id="addressHelp" class="form-text text-muted">This should be the address from which you sent the payment. You must have the private key to be able to complete this form.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="signed-message">Message (guld username or email please)</label>
+                                <input type="text" class="form-control" id="signed-message" placeholder="text">
+                              </div>
+                              <div class="form-group">
+                                <label for="signature">Signature</label>
+                                <input type="text" class="form-control" id="signature" placeholder="text">
+                              </div>
+                              <button type="submit" class="btn btn-primary" onClick="sendProofOfAddress()">Submit</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
