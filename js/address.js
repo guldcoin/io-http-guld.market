@@ -2,16 +2,29 @@
 window.quote = 'USD'
 window.pay = 'BTC'
 window.base = 'GULD'
+window.lastActive = 'quote'
 window.bases = {
+  'active': 'GULD',
   'GULD': {
-    'image': '/img/guld.svg'
+    'image': '/img/guld.svg',
+    'addresses': {
+      BTC: '1FVa2fGZqVzDXer8HirMcKSbDcfR4R4zNK',
+      DASH: 'XgUUUh7tqngC6SZ9uFMZjkQvRRuzdee8A4',
+      ETH: '0x4cddc8fe277b56f4c2e229b943d8813fc666773a'
+    }
   },
   'ISYSD': {
-    'image': '/img/wizard-head.png'
+    'image': '/img/wizard-head.png',
+    'addresses': {
+      BTC: '1HcsB8bKB6tVMcYLnixjRrFzxiqMn44r4x',
+      DASH: 'Xie5ZLAaBkXHeVh3qdhJ4jkX4gYMGJfJ2q',
+      ETH: '0xb6585cD2a3D4ab6568dD607b154eaC688D5f0C2d'
+    }
   }
 }
 
 window.quotes = {
+  'active': 'BTC',
   'BTC': {
     'image': '/img/btc.svg'
   },
@@ -85,26 +98,56 @@ function updatePrice (quote, base, market='coinmarketcap') {
   })
 }
 
+function updateAmounts () {
+  var depAmt = document.getElementById('deposit-amount')
+  var recAmt = document.getElementById('receive-amount')
+  depAmt.innerText = ``
+}
+
+function updateAssets (quote, base) {
+  window.quotes.active = quote || window.quotes.active
+  window.bases.active = base || window.bases.active
+  loadAssets()
+}
+
+function loadAssets () {
+  var card = document.getElementById('qr-card')
+  var qqr = document.getElementById('quote-logo-active')
+  qqr.src = window.quotes[window.quotes.active].image
+  var bqr = document.getElementById('base-logo-active')
+  bqr.src = window.bases[window.bases.active].image
+
+  card.innerHTML = `<a href="${window.quotes.active.toLowerCase()}://${window.bases[window.bases.active].addresses[window.quotes.active]}">
+    <div class="card-block">
+        <h4 class="card-title">${window.bases[window.bases.active].addresses[window.quotes.active]}</h4>
+    </div>
+    <div class="text-center mt-3">
+        <img src="img/address/${window.bases[window.bases.active].addresses[window.quotes.active]}.png" alt="${window.bases[window.bases.active].addresses[window.quotes.active]}" class="card-img-top qrcode">
+    </div>
+</a>
+`
+}
+
 function loadAssetList () {
   var qel = document.getElementById('quote-list')
   qel.innerHTML = ''
-  var qlist = Object.keys(window.quotes)
+  var qlist = Object.keys(window.quotes).filter(e => e !== 'active')
   for (var q = 0; q < qlist.length; q++) {
     var quote = qlist[q]
     qel.innerHTML = `${qel.innerHTML}
 <div class="card card-asset">
-  <img class="card-img-top" src="${window.quotes[quote].image}" alt="Deposit ${quote}" title="Deposit ${quote}">
+  <a onClick="javascript: updateAssets('${quote}')"><img class="card-img-top" src="${window.quotes[quote].image}" alt="Deposit ${quote}" title="Deposit ${quote}"></a>
 </div>
 `
   }
   var bel = document.getElementById('base-list')
   bel.innerHTML = ''
-  var blist = Object.keys(window.bases)
+  var blist = Object.keys(window.bases).filter(e => e !== 'active')
   for (var b = 0; b < blist.length; b++) {
     var base = blist[b]
     bel.innerHTML = `${bel.innerHTML}
 <div class="card card-asset">
-  <img class="card-img-top" src="${window.bases[base].image}" alt="Receive ${base}" title="Receive ${base}">
+  <a onClick="javascript: updateAssets(undefined, '${base}')"><img class="card-img-top" src="${window.bases[base].image}" alt="Receive ${base}" title="Receive ${base}"></a>
 </div>
 `
   }
@@ -117,6 +160,7 @@ var countDownDate = roundTimeQuarterHour().getTime();
 $(document).ready(function () {
     loadAssetList()
     updatePrice()
+    loadAssets()
 })
 
 // Update the count down every 1 second
