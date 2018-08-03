@@ -6,6 +6,7 @@ window.lastActive = 'quote'
 window.bases = {
   'active': 'GULD',
   'GULD': {
+    'name': 'guld',
     'image': '/img/guld.svg',
     'addresses': {
       BTC: '1FVa2fGZqVzDXer8HirMcKSbDcfR4R4zNK',
@@ -14,6 +15,7 @@ window.bases = {
     }
   },
   'ISYSD': {
+    'name': 'isysd',
     'image': '/img/wizard-head.png',
     'addresses': {
       BTC: '1HcsB8bKB6tVMcYLnixjRrFzxiqMn44r4x',
@@ -26,12 +28,15 @@ window.bases = {
 window.quotes = {
   'active': 'BTC',
   'BTC': {
+    'name': 'bitcoin',
     'image': '/img/btc.svg'
   },
   'DASH': {
+    'name': 'dash',
     'image': '/img/dash.png'
   },
   'ETH': {
+    'name': 'ethereum',
     'image': '/img/eth.png'
   }
 }
@@ -149,7 +154,7 @@ function loadAssets () {
   var bqr = document.getElementById('base-logo-active')
   bqr.src = window.bases[window.bases.active].image
 
-  card.innerHTML = `<a href="${window.quotes.active.toLowerCase()}://${window.bases[window.bases.active].addresses[window.quotes.active]}">
+  card.innerHTML = `<a href="${window.quotes[window.quotes.active].name}://${window.bases[window.bases.active].addresses[window.quotes.active]}">
     <div class="card-block">
         <h4 class="card-title">${window.bases[window.bases.active].addresses[window.quotes.active]}</h4>
     </div>
@@ -168,7 +173,7 @@ function loadAssetList () {
     var quote = qlist[q]
     qel.innerHTML = `${qel.innerHTML}
 <div class="card card-asset">
-  <a onClick="javascript: updateAssets('${quote}')"><img class="card-img-top" src="${window.quotes[quote].image}" alt="Deposit ${quote}" title="Deposit ${quote}"></a>
+  <a onClick="javascript: updateAssets('${quote}');  $('#quoteModal').modal('toggle');"><img class="card-img-top" src="${window.quotes[quote].image}" alt="Deposit ${quote}" title="Deposit ${quote}"></a>
 </div>
 `
   }
@@ -179,7 +184,7 @@ function loadAssetList () {
     var base = blist[b]
     bel.innerHTML = `${bel.innerHTML}
 <div class="card card-asset">
-  <a onClick="javascript: updateAssets(undefined, '${base}')"><img class="card-img-top" src="${window.bases[base].image}" alt="Receive ${base}" title="Receive ${base}"></a>
+  <a onClick="javascript: updateAssets(undefined, '${base}');  $('#baseModal').modal('toggle');"><img class="card-img-top" src="${window.bases[base].image}" alt="Receive ${base}" title="Receive ${base}"></a>
 </div>
 `
   }
