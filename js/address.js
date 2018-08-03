@@ -89,9 +89,12 @@ function parseCommodityPrice (pricef, commodity = 'GULD', quote = 'USD') {
 }
 
 function updatePrices (pay, base, market='coinmarketcap') {
+  pay = pay || window.pay
+  base = base || window.base
   if (pay === quote) return updatePrice(pay, base, market)
   else {
-    var bp = updatePrice
+    updatePrice(window.quote, base)
+    updatePrice(window.quote, pay)
   }
 }
 
@@ -99,27 +102,38 @@ function updatePrice (quote, base, market='coinmarketcap') {
   quote = quote || window.quote
   base = base || window.base
   if (base === 'GULD') market = 'guld-core'
-  function process (data) {
-    var activePrices = document.getElementsByClassName("active-price");
-    for(var i = activePrices.length - 1; i >= 0; i--) {
-        activePrices[i].innerText = parseCommodityPrice(data, base, quote)
-        window.prices[quote][base] = Number(activePrices[i].innerText)
-    }
-  }
   $.ajax({
     url: `/market/${quote}/${base}/prices/${market}.dat`,
   })
-  .done(process)
+  .done(p => {
+    console.log(p)
+    window.prices[quote][base] = parseCommodityPrice(p, base, quote)
+    loadPrices()
+  })
   .fail(function() {
     console.log("Ajax failed to fetch data")
   })
 }
 
+function loadPrices () {
+  console.log(window.prices[window.quote])
+  if (window.prices[window.quote][window.bases.active] &&
+      window.prices[window.quote][window.bases.active] !== 0 &&
+      window.prices[window.quote][window.quotes.active] &&
+      window.prices[window.quote][window.quotes.active] !== 0) {
+    window.prices[window.quotes.active][window.bases.active] = Math.round(window.prices[window.quote][window.bases.active] / window.prices[window.quote][window.quotes.active] * 1e8) / 1e8
+    var activePrices = document.getElementsByClassName("active-price")
+    for(var i = activePrices.length - 1; i >= 0; i--) {
+        activePrices[i].innerText = window.prices[window.quotes.active][window.bases.active]
+        updateAmounts()
+    }
+  }
+}
+
 function updateAmounts () {
   var depAmt = document.getElementById('deposit-amount')
   var recAmt = document.getElementById('receive-amount')
-  
-  depAmt.innerText = `${}`
+  depAmt.innerText = `${Number(recAmt.innerText) / window.prices[window.quotes.active][window.bases.active]}`
 }
 
 function updateAssets (quote, base) {
@@ -177,7 +191,7 @@ var countDownDate = roundTimeQuarterHour().getTime();
 
 $(document).ready(function () {
     loadAssetList()
-    updatePrice()
+    updatePrices()
     loadAssets()
 })
 
