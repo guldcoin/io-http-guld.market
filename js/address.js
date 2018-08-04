@@ -65,7 +65,7 @@ function filterPricesByTime (line) {
   else {
     var pdate = line.substring(2, 12)
     var apdate = pdate.split('/')
-    pdate = `${apdate[1]}/${apdate[2]}/${apdate[0]}`
+    pdate = `${apdate[1]}/${apdate[2]}/${apdate[0]} 00:00:00 GMT+00:00`
     var now = Date.now()
     var ptime = new Date(pdate).getTime()
     if (now >= ptime) {
@@ -111,12 +111,11 @@ function updatePrice (quote, base, market='coinmarketcap') {
     url: `/market/${quote}/${base}/prices/${market}.dat`,
   })
   .done(p => {
-    console.log(p)
     window.prices[quote][base] = parseCommodityPrice(p, base, quote)
     loadPrices()
   })
   .fail(function() {
-    console.log("Ajax failed to fetch data")
+    console.error("Ajax failed to fetch data")
   })
 }
 
